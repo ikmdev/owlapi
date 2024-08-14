@@ -28,7 +28,7 @@ jobs:
         with:
           checkout-fetch-depth: 0
           java-version: 21
-          java-distribution: adopt
+          java-distribution: zulu
           maven-version: 3.9.0
 
       - name: Checkout Forked Code Repository
