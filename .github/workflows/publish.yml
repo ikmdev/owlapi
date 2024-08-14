@@ -23,14 +23,6 @@ jobs:
       MAVEN_FILE: '/home/ec2-user/maven/.m2/settings.xml'
 
     steps:
-      - name: Setup Maven Action
-        uses: s4u/setup-maven-action@v1.14.0
-        with:
-          checkout-fetch-depth: 0
-          java-version: 21
-          java-distribution: zulu
-          maven-version: 3.9.0
-
       - name: Checkout Forked Code Repository
         uses: actions/checkout@v4
         if:   github.event.workflow_run.event == 'pull_request'
