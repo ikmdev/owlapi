@@ -1521,3 +1521,8 @@ The opportunity to clean up method names was also taken.
 *    Anonymous properties weren't rendered correcty. Fixed.
 *    RDF rendering for sub property axioms whose sub property is a property chain used an old rendering.  The rendering now complies with the latest OWL 2 specification.  Ontologies that use the old rendering can still be parsed.
 *    RDF lists were reordered on rendering. Fixed.
+
+
+## Demo Update
+
+Just a test to show how stuff works
