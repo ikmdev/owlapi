@@ -7,3 +7,7 @@ Primary changes:
 * Implement modules (JPMS)
 * Remove some modules, retaining core API and parsers
 
+### Team Ownership - Product Owner
+
+Data Team - Eric Mays (External) <emays@mays-systems.com>
+
