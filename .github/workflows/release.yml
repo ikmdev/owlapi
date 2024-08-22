@@ -74,7 +74,7 @@ jobs:
       - name: Increment Snapshot Version
         id: nextSnapshotVersion
         run: |
-          echo "SnapshotVersion=${{steps.splitVersionMinor.outputs._0}}.$((${{steps.splitVersionMinor.outputs._1}} + 1)).${{steps.splitVersionMinor.outputs._2}}-SNAPSHOT" >> $GITHUB_OUTPUT
+          echo "SnapshotVersion=${{steps.splitVersionMinor.outputs._0}}.${{steps.splitVersionMinor.outputs._1}}.$((${{steps.splitVersionMinor.outputs._2}} + 1))-SNAPSHOT" >> $GITHUB_OUTPUT
 
       - name: Print Information
         run: |
