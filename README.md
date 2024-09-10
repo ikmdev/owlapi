@@ -11,3 +11,7 @@ Primary changes:
 
 Data Team - Eric Mays (External) <emays@mays-systems.com>
 
+## Issues and Contributions
+Technical and non-technical issues can be reported to the [Issue Tracker](https://github.com/ikmdev/owlapi/issues).
+
+Contributions can be submitted via pull requests. Please check the [contribution guide](doc/how-to-contribute.md) for more details.
