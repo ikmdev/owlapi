@@ -19,15 +19,27 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
+		<!-- logging dependencies-->
 		<slf4j.version>2.0.13</slf4j.version>
+		<!-- dev.ikm JPMS dependencies-->
+		<guava.version>33.1.0-jre-r3</guava.version>
+		<jsr305.version>3.0.2-r6</jsr305.version>
+		<!-- other dependencies -->
 		<caffeine.version>3.1.8</caffeine.version>
-		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+		<!-- test dependencies-->
+		<junit-jupiter.version>5.10.3</junit-jupiter.version>
+		<!-- maven plugins -->
 		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
 		<maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
 		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
 		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
 		<maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+		<!-- other plugins -->
+		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+		<license-maven-plugin.version>2.4.0</license-maven-plugin.version>
+		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
+		<versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
 	</properties>
 
 	<modules>
@@ -62,16 +74,24 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- logging dependencies-->
 			<dependency>
-				<groupId>com.github.ben-manes.caffeine</groupId>
-				<artifactId>caffeine</artifactId>
-				<version>${caffeine.version}</version>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- dev.ikm JPMS dependencies-->
 			<dependency>
 				<!-- <groupId>com.google.guava</groupId>-->
 				<groupId>dev.ikm.jpms</groupId>
 				<artifactId>guava</artifactId>
-				<version>33.1.0-jre-r3</version>
+				<version>${guava.version}</version>
 			</dependency>
 			<dependency>
 				<!-- <groupId>javax.inject</groupId>-->
@@ -83,30 +103,36 @@
 				<!-- <groupId>com.google.code.findbugs</groupId>-->
 				<groupId>dev.ikm.jpms</groupId>
 				<artifactId>jsr305</artifactId>
-				<version>3.0.2-r6</version>
+				<version>${jsr305.version}</version>
+			</dependency>
+			<!-- other dependencies -->
+			<dependency>
+				<groupId>com.github.ben-manes.caffeine</groupId>
+				<artifactId>caffeine</artifactId>
+				<version>${caffeine.version}</version>
+			</dependency>
+			<!-- test dependencies-->
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
+		<!-- logging dependencies-->
 		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>2.2</version>
-			<scope>test</scope>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<version>5.10.1</version>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>4.11.0</version>
-			<scope>test</scope>
-		</dependency>
+		<!-- dev.ikm JPMS dependencies-->
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>guava</artifactId>
@@ -115,22 +141,23 @@
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>jsr305</artifactId>
 		</dependency>
+		<!-- test dependencies-->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<version>${slf4j.version}</version>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>2.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!--		<dependency>-->
-		<!--			<groupId>commons-io</groupId>-->
-		<!--			<artifactId>commons-io</artifactId>-->
-		<!--			<version>2.11.0</version>-->
-		<!--		</dependency>-->
+			<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<developers>
@@ -376,8 +403,30 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- In the Compiler Plugin we specify the encoding and the compiler
-			version. -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>analyze</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>display-dependency-updates</goal>
+							<goal>display-plugin-updates</goal>
+						</goals>
+						<configuration>
+							<ruleSet>
+								<ignoreVersions>
+									<ignoreVersion>
+										<type>regex</type>
+										<version>.+(alpha|beta).*</version>
+									</ignoreVersion>
+								</ignoreVersions>
+							</ruleSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -388,25 +437,23 @@
 					<fork>true</fork>
 				</configuration>
 			</plugin>
-
-			<!-- We need to configure the Source Plugin for deploying the
-			sources. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>**/*IntegrationTestCase.java</exclude>
+					</excludes>
+					<!--					<printSummary>false</printSummary>-->
+					<!-- <parallel>all</parallel> <threadCount>1</threadCount>
+					<perCoreThreadCount>true</perCoreThreadCount> -->
+					<!--					<argLine>-Xmx2G
+					-Djava.awt.headless=true</argLine>-->
+					<parallel>classes</parallel>
+					<!--					<useUnlimitedThreads>true</useUnlimitedThreads>-->
+				</configuration>
 			</plugin>
-
-			<!-- We need to configure the Javadoc Plugin for deploying the
-			Javadocs -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -427,23 +474,18 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- The Surefire Plugin is for error reporting. -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<excludes>
-						<exclude>**/*IntegrationTestCase.java</exclude>
-					</excludes>
-					<!--					<printSummary>false</printSummary>-->
-					<!-- <parallel>all</parallel> <threadCount>1</threadCount>
-					<perCoreThreadCount>true</perCoreThreadCount> -->
-					<!--					<argLine>-Xmx2G
-					-Djava.awt.headless=true</argLine>-->
-					<parallel>classes</parallel>
-					<!--					<useUnlimitedThreads>true</useUnlimitedThreads>-->
-				</configuration>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -490,7 +532,11 @@
 					<artifactId>nexus-staging-maven-plugin</artifactId>
 					<version>${nexus-staging-maven-plugin.version}</version>
 				</plugin>
-
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven-plugin.version}</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 
