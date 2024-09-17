@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>dev.ikm.owlapi</groupId>
@@ -14,41 +12,10 @@
 		creating, manipulating and serialising OWL Ontologies. The latest
 		version of the API is focused towards OWL 2</description>
 	<url>http://owlcs.github.io/owlapi/</url>
-
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
-		<!-- logging dependencies-->
-		<slf4j.version>2.0.13</slf4j.version>
-		<!-- dev.ikm JPMS dependencies-->
-		<guava.version>33.1.0-jre-r3</guava.version>
-		<jsr305.version>3.0.2-r6</jsr305.version>
-		<!-- other dependencies -->
-		<caffeine.version>3.1.8</caffeine.version>
-		<!-- test dependencies-->
-		<junit-jupiter.version>5.10.3</junit-jupiter.version>
-		<!-- maven plugins -->
-		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
-		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
-		<maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
-		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
-		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-		<maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
-		<!-- other plugins -->
-		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-		<license-maven-plugin.version>2.4.0</license-maven-plugin.version>
-		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
-		<versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
-	</properties>
-
-	<modules>
-		<module>api</module>
-		<module>impl</module>
-		<module>parsers</module>
-		<module>apibinding</module>
-	</modules>
-
+	<organization>
+		<name>The University of Manchester</name>
+		<url>http://www.cs.manchester.ac.uk/</url>
+	</organization>
 	<licenses>
 		<license>
 			<name>Apache License Version 2.0, January 2004</name>
@@ -71,94 +38,6 @@
 		<!-- OSSRH Related License (End) -->
 
 	</licenses>
-
-	<dependencyManagement>
-		<dependencies>
-			<!-- logging dependencies-->
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-api</artifactId>
-				<version>${slf4j.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-				<version>${slf4j.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<!-- dev.ikm JPMS dependencies-->
-			<dependency>
-				<!-- <groupId>com.google.guava</groupId>-->
-				<groupId>dev.ikm.jpms</groupId>
-				<artifactId>guava</artifactId>
-				<version>${guava.version}</version>
-			</dependency>
-			<dependency>
-				<!-- <groupId>javax.inject</groupId>-->
-				<groupId>dev.ikm.jpms</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>1-r4</version>
-			</dependency>
-			<dependency>
-				<!-- <groupId>com.google.code.findbugs</groupId>-->
-				<groupId>dev.ikm.jpms</groupId>
-				<artifactId>jsr305</artifactId>
-				<version>${jsr305.version}</version>
-			</dependency>
-			<!-- other dependencies -->
-			<dependency>
-				<groupId>com.github.ben-manes.caffeine</groupId>
-				<artifactId>caffeine</artifactId>
-				<version>${caffeine.version}</version>
-			</dependency>
-			<!-- test dependencies-->
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter</artifactId>
-				<version>${junit-jupiter.version}</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
-	<dependencies>
-		<!-- logging dependencies-->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-simple</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- dev.ikm JPMS dependencies-->
-		<dependency>
-			<groupId>dev.ikm.jpms</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>dev.ikm.jpms</groupId>
-			<artifactId>jsr305</artifactId>
-		</dependency>
-		<!-- test dependencies-->
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>2.2</version>
-			<scope>test</scope>
-		</dependency>
-			<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>4.11.0</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
 
 	<developers>
 		<developer>
@@ -190,10 +69,309 @@
 		</mailingList>
 	</mailingLists>
 
-	<organization>
-		<name>The University of Manchester</name>
-		<url>http://www.cs.manchester.ac.uk/</url>
-	</organization>
+	<modules>
+		<module>api</module>
+		<module>impl</module>
+		<module>parsers</module>
+		<module>apibinding</module>
+	</modules>
+
+	<!-- Parameters for the Source Code Management system. -->
+	<scm>
+		<!-- <url>https://github.com/owlcs/owlapi</url> -->
+		<url>http://www.github.com/ikmdev/owlapi</url>
+	</scm>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>21</java.version>
+		<!-- logging dependencies-->
+		<slf4j.version>2.0.13</slf4j.version>
+		<!-- dev.ikm JPMS dependencies-->
+		<guava.version>33.1.0-jre-r3</guava.version>
+		<jsr305.version>3.0.2-r6</jsr305.version>
+		<!-- other dependencies -->
+		<caffeine.version>3.1.8</caffeine.version>
+		<!-- test dependencies-->
+		<junit-jupiter.version>5.10.3</junit-jupiter.version>
+		<!-- maven plugins -->
+		<maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+		<maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
+		<maven-enforcer-plugin.version>3.4.1</maven-enforcer-plugin.version>
+		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+		<maven-source-plugin.version>3.3.0</maven-source-plugin.version>
+		<maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+		<!-- other plugins -->
+		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+		<license-maven-plugin.version>2.4.0</license-maven-plugin.version>
+		<tidy-maven-plugin.version>1.2.0</tidy-maven-plugin.version>
+		<versions-maven-plugin.version>2.15.0</versions-maven-plugin.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- logging dependencies-->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-simple</artifactId>
+				<version>${slf4j.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- dev.ikm JPMS dependencies-->
+			<dependency><!-- <groupId>com.google.guava</groupId>-->
+				<groupId>dev.ikm.jpms</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+			<dependency><!-- <groupId>javax.inject</groupId>-->
+				<groupId>dev.ikm.jpms</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>1-r4</version>
+			</dependency>
+			<dependency><!-- <groupId>com.google.code.findbugs</groupId>-->
+				<groupId>dev.ikm.jpms</groupId>
+				<artifactId>jsr305</artifactId>
+				<version>${jsr305.version}</version>
+			</dependency>
+			<!-- other dependencies -->
+			<dependency>
+				<groupId>com.github.ben-manes.caffeine</groupId>
+				<artifactId>caffeine</artifactId>
+				<version>${caffeine.version}</version>
+			</dependency>
+			<!-- test dependencies-->
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter</artifactId>
+				<version>${junit-jupiter.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<dependencies>
+		<!-- logging dependencies-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- dev.ikm JPMS dependencies-->
+		<dependency>
+			<groupId>dev.ikm.jpms</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>dev.ikm.jpms</groupId>
+			<artifactId>jsr305</artifactId>
+		</dependency>
+		<!-- test dependencies-->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>2.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>4.11.0</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>findbugs-maven-plugin</artifactId>
+					<version>3.0.5</version>
+					<executions>
+						<execution>
+							<id>findbugs-check</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>check</goal>
+							</goals>
+							<configuration>
+								<failOnError>false</failOnError>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!-- This plugin stage the artifacts to the OSSRH Repository,
+				release and sync them with Central Repository -->
+				<plugin>
+					<groupId>org.sonatype.plugins</groupId>
+					<artifactId>nexus-staging-maven-plugin</artifactId>
+					<version>${nexus-staging-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>tidy-maven-plugin</artifactId>
+					<version>${tidy-maven-plugin.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>versions-maven-plugin</artifactId>
+					<version>${versions-maven-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>${maven-enforcer-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>enforce-maven</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<requireMavenVersion>
+									<version>3.8</version>
+								</requireMavenVersion>
+								<requireJavaVersion>
+									<version>${java.version}</version>
+								</requireJavaVersion>
+							</rules>
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>analyze</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>display-dependency-updates</goal>
+							<goal>display-plugin-updates</goal>
+						</goals>
+						<configuration>
+							<ruleSet>
+								<ignoreVersions>
+									<ignoreVersion>
+										<type>regex</type>
+										<version>.+(alpha|beta).*</version>
+									</ignoreVersion>
+								</ignoreVersions>
+							</ruleSet>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tidy-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<fork>true</fork>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>**/*IntegrationTestCase.java</exclude>
+					</excludes>
+					<!--					<printSummary>false</printSummary>-->
+					<!-- <parallel>all</parallel> <threadCount>1</threadCount>
+					<perCoreThreadCount>true</perCoreThreadCount> -->
+					<!--					<argLine>-Xmx2G
+					-Djava.awt.headless=true</argLine>-->
+					<parallel>classes</parallel>
+					<!--					<useUnlimitedThreads>true</useUnlimitedThreads>-->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+				<configuration>
+					<show>public</show>
+					<doclint>none</doclint>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<skip>false</skip>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>${maven-source-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>${maven-dependency-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>analyze</id>
+						<goals>
+							<goal>analyze-only</goal>
+						</goals>
+						<configuration>
+							<ignoreUnusedRuntime>true</ignoreUnusedRuntime>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 	<profiles>
 
@@ -376,177 +554,4 @@
 		<!-- OSSRH Related Prfoiles (End) -->
 
 	</profiles>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>${maven-enforcer-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>enforce-maven</id>
-						<goals>
-							<goal>enforce</goal>
-						</goals>
-						<configuration>
-							<rules>
-								<requireMavenVersion>
-									<version>3.8</version>
-								</requireMavenVersion>
-								<requireJavaVersion>
-									<version>${java.version}</version>
-								</requireJavaVersion>
-							</rules>
-							<fail>true</fail>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>analyze</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>display-dependency-updates</goal>
-							<goal>display-plugin-updates</goal>
-						</goals>
-						<configuration>
-							<ruleSet>
-								<ignoreVersions>
-									<ignoreVersion>
-										<type>regex</type>
-										<version>.+(alpha|beta).*</version>
-									</ignoreVersion>
-								</ignoreVersions>
-							</ruleSet>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>${maven-compiler-plugin.version}</version>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<fork>true</fork>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${maven-surefire-plugin.version}</version>
-				<configuration>
-					<excludes>
-						<exclude>**/*IntegrationTestCase.java</exclude>
-					</excludes>
-					<!--					<printSummary>false</printSummary>-->
-					<!-- <parallel>all</parallel> <threadCount>1</threadCount>
-					<perCoreThreadCount>true</perCoreThreadCount> -->
-					<!--					<argLine>-Xmx2G
-					-Djava.awt.headless=true</argLine>-->
-					<parallel>classes</parallel>
-					<!--					<useUnlimitedThreads>true</useUnlimitedThreads>-->
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>${maven-javadoc-plugin.version}</version>
-				<configuration>
-					<show>public</show>
-					<doclint>none</doclint>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-						<configuration>
-							<skip>false</skip>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>${maven-source-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>${maven-dependency-plugin.version}</version>
-				<executions>
-					<execution>
-						<id>analyze</id>
-						<goals>
-							<goal>analyze-only</goal>
-						</goals>
-						<configuration>
-							<ignoreUnusedRuntime>true</ignoreUnusedRuntime>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>3.0.5</version>
-					<executions>
-						<execution>
-							<id>findbugs-check</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>check</goal>
-							</goals>
-							<configuration>
-								<failOnError>false</failOnError>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-
-				<!-- This plugin stage the artifacts to the OSSRH Repository,
-				release and sync them with Central Repository -->
-				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>nexus-staging-maven-plugin</artifactId>
-					<version>${nexus-staging-maven-plugin.version}</version>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>versions-maven-plugin</artifactId>
-					<version>${versions-maven-plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-
-	</build>
-
-
-	<!-- Parameters for the Source Code Management system. -->
-	<scm>
-		<!-- <url>https://github.com/owlcs/owlapi</url> -->
-		<url>http://www.github.com/ikmdev/owlapi</url>
-	</scm>
-
 </project>
