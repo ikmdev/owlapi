@@ -10,16 +10,36 @@
 
 	<artifactId>owlapi-api</artifactId>
 
-	<name>OWLAPI :: Interfaces</name>
+	<name>OWLAPI Interfaces</name>
 
 	<dependencies>
+		<!-- test dependencies-->
 		<dependency>
-			<groupId>com.github.ben-manes.caffeine</groupId>
-			<artifactId>caffeine</artifactId>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+		</dependency>
+		<!-- dev.ikm.jpms dependencies-->
+		<dependency>
+			<groupId>dev.ikm.jpms</groupId>
+			<artifactId>guava</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>dev.ikm.jpms</groupId>
+			<artifactId>jsr305</artifactId>
+		</dependency>
+		<!-- other dependencies -->
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+		</dependency>
+
 	</dependencies>
 </project>
