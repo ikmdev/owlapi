@@ -52,7 +52,7 @@
 		<!-- test dependencies-->
 		<junit-jupiter.version>5.10.3</junit-jupiter.version>
 		<!-- dev.ikm.jpms dependencies-->
-		<guava.version>33.1.0-jre-r3</guava.version>
+		<guava.version>33.3.0-jre-r1</guava.version>
 		<jsr305.version>3.0.2-r6</jsr305.version>
 		<!-- other dependencies -->
 		<caffeine.version>3.1.8</caffeine.version>
