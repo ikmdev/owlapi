@@ -1,6 +1,6 @@
 open module org.semanticweb.owlapi.apibinding {
 
-	requires javax.annotation;
+	requires dev.ikm.jpms.javax.annotation;
 
 	requires transitive org.semanticweb.owlapi;
 	requires transitive org.semanticweb.owlapi.impl;

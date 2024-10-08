@@ -52,8 +52,8 @@
 		<!-- test dependencies-->
 		<junit-jupiter.version>5.10.3</junit-jupiter.version>
 		<!-- dev.ikm.jpms dependencies-->
-		<guava.version>33.1.0-jre-r3</guava.version>
-		<jsr305.version>3.0.2-r6</jsr305.version>
+		<guava.version>33.3.0-jre-r1</guava.version>
+		<jsr305.version>3.0.2-r7</jsr305.version>
 		<!-- other dependencies -->
 		<caffeine.version>3.1.8</caffeine.version>
 		<!-- org.apache.maven.plugins -->
@@ -129,7 +129,7 @@
 			<dependency><!-- <groupId>javax.inject</groupId>-->
 				<groupId>dev.ikm.jpms</groupId>
 				<artifactId>javax.inject</artifactId>
-				<version>1-r4</version>
+				<version>1-r5</version>
 			</dependency>
 			<dependency><!-- <groupId>com.google.code.findbugs</groupId>-->
 				<groupId>dev.ikm.jpms</groupId>
