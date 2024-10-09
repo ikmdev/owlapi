@@ -13,7 +13,7 @@
 	<name>OWLAPI Interfaces</name>
 
 	<dependencies>
-		<!-- test dependencies-->
+		<!-- test dependencies -->
 		<dependency>
 			<groupId>org.hamcrest</groupId>
 			<artifactId>hamcrest</artifactId>
@@ -22,7 +22,7 @@
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-params</artifactId>
 		</dependency>
-		<!-- dev.ikm.jpms dependencies-->
+		<!-- dev.ikm.jpms dependencies -->
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>guava</artifactId>

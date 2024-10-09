@@ -13,7 +13,7 @@
 	<name>OWLAPI Parsers</name>
 
 	<dependencies>
-		<!-- dev.ikm.jpms dependencies-->
+		<!-- dev.ikm.jpms dependencies -->
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>guava</artifactId>
@@ -26,7 +26,7 @@
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>jsr305</artifactId>
 		</dependency>
-		<!-- project dependencies-->
+		<!-- project dependencies -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>owlapi-api</artifactId>
