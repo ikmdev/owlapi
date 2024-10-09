@@ -47,12 +47,12 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>21</java.version>
-		<!-- logging dependencies-->
-		<slf4j.version>2.0.13</slf4j.version>
-		<!-- test dependencies-->
-		<junit-jupiter.version>5.10.3</junit-jupiter.version>
-		<!-- dev.ikm.jpms dependencies-->
-		<guava.version>33.3.0-jre-r1</guava.version>
+		<!-- logging dependencies -->
+		<slf4j.version>2.0.16</slf4j.version>
+		<!-- test dependencies -->
+		<junit-jupiter.version>5.11.2</junit-jupiter.version>
+		<!-- dev.ikm.jpms dependencies -->
+		<guava.version>33.3.0-jre-r2</guava.version>
 		<jsr305.version>3.0.2-r7</jsr305.version>
 		<!-- other dependencies -->
 		<caffeine.version>3.1.8</caffeine.version>
@@ -83,7 +83,7 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- logging dependencies-->
+			<!-- logging dependencies -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
@@ -95,7 +95,7 @@
 				<version>${slf4j.version}</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- test dependencies-->
+			<!-- test dependencies -->
 			<dependency>
 				<groupId>org.hamcrest</groupId>
 				<artifactId>hamcrest</artifactId>
@@ -120,7 +120,7 @@
 				<version>4.11.0</version>
 				<scope>test</scope>
 			</dependency>
-			<!-- dev.ikm.jpms dependencies-->
+			<!-- dev.ikm.jpms dependencies -->
 			<dependency><!-- <groupId>com.google.guava</groupId>-->
 				<groupId>dev.ikm.jpms</groupId>
 				<artifactId>guava</artifactId>
@@ -145,7 +145,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<dependencies>
-		<!-- logging dependencies-->
+		<!-- logging dependencies -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -155,7 +155,7 @@
 			<artifactId>slf4j-simple</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- test dependencies-->
+		<!-- test dependencies -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>

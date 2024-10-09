@@ -13,12 +13,12 @@
 	<name>OWLAPI Binding and Config</name>
 
 	<dependencies>
-		<!-- test dependencies-->
+		<!-- dev.ikm.jpms dependencies -->
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>jsr305</artifactId>
 		</dependency>
-		<!-- project dependencies-->
+		<!-- project dependencies -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>owlapi-api</artifactId>
