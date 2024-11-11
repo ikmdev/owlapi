@@ -4,7 +4,7 @@
 
 	<groupId>dev.ikm.owlapi</groupId>
 	<artifactId>owlapi-parent</artifactId>
-	<version>4.7.6-SNAPSHOT</version>
+	<version>4.7.6</version>
 	<packaging>pom</packaging>
 
 	<name>OWLAPI</name>
