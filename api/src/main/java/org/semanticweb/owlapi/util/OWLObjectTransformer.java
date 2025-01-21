@@ -19,6 +19,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -124,9 +126,6 @@ import org.semanticweb.owlapi.model.SWRLSameIndividualAtom;
 import org.semanticweb.owlapi.model.SWRLVariable;
 import org.semanticweb.owlapi.model.SetOntologyID;
 import org.semanticweb.owlapi.vocab.OWLFacet;
-
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
 
 /**
  * Transform axioms by rewriting parts of them.
@@ -295,7 +294,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(
@@ -308,7 +307,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDatatypeDefinitionAxiom(t(axiom.getDatatype()),
@@ -321,7 +320,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLAnnotationAssertionAxiom(t(axiom.getSubject()),
@@ -334,7 +333,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLSubAnnotationPropertyOfAxiom(t(axiom.getSubProperty()),
@@ -347,7 +346,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLAnnotationPropertyDomainAxiom(t(axiom.getProperty()),
@@ -360,7 +359,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLAnnotationPropertyRangeAxiom(t(axiom.getProperty()),
@@ -373,7 +372,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLSubClassOfAxiom(t(axiom.getSubClass()), t(axiom.getSuperClass()),
@@ -386,7 +385,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLNegativeObjectPropertyAssertionAxiom(t(axiom.getProperty()),
@@ -399,7 +398,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLAsymmetricObjectPropertyAxiom(t(axiom.getProperty()),
@@ -412,7 +411,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLReflexiveObjectPropertyAxiom(t(axiom.getProperty()),
@@ -425,7 +424,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDisjointClassesAxiom(t(axiom.getClassExpressions()),
@@ -438,7 +437,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDataPropertyDomainAxiom(t(axiom.getProperty()),
@@ -451,7 +450,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLObjectPropertyDomainAxiom(t(axiom.getProperty()),
@@ -464,7 +463,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLEquivalentObjectPropertiesAxiom(t(axiom.getProperties()),
@@ -477,7 +476,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLNegativeDataPropertyAssertionAxiom(t(axiom.getProperty()),
@@ -490,7 +489,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDifferentIndividualsAxiom(t(axiom.getIndividuals()),
@@ -503,7 +502,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDisjointDataPropertiesAxiom(t(axiom.getProperties()),
@@ -516,7 +515,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDisjointObjectPropertiesAxiom(t(axiom.getProperties()),
@@ -529,7 +528,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLObjectPropertyRangeAxiom(t(axiom.getProperty()),
@@ -542,7 +541,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLObjectPropertyAssertionAxiom(t(axiom.getProperty()),
@@ -555,7 +554,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLFunctionalObjectPropertyAxiom(t(axiom.getProperty()),
@@ -568,7 +567,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLSubObjectPropertyOfAxiom(t(axiom.getSubProperty()),
@@ -581,7 +580,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDisjointUnionAxiom(t(axiom.getOWLClass()),
@@ -594,7 +593,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLSymmetricObjectPropertyAxiom(t(axiom.getProperty()),
@@ -607,7 +606,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDataPropertyRangeAxiom(t(axiom.getProperty()),
@@ -620,7 +619,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLFunctionalDataPropertyAxiom(t(axiom.getProperty()),
@@ -633,7 +632,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLEquivalentDataPropertiesAxiom(t(axiom.getProperties()),
@@ -646,7 +645,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLClassAssertionAxiom(t(axiom.getClassExpression()),
@@ -659,7 +658,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLEquivalentClassesAxiom(t(axiom.getClassExpressions()),
@@ -672,7 +671,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLDataPropertyAssertionAxiom(t(axiom.getProperty()),
@@ -685,7 +684,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLTransitiveObjectPropertyAxiom(t(axiom.getProperty()),
@@ -698,7 +697,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLIrreflexiveObjectPropertyAxiom(t(axiom.getProperty()),
@@ -711,7 +710,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLSubDataPropertyOfAxiom(t(axiom.getSubProperty()),
@@ -724,7 +723,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLInverseFunctionalObjectPropertyAxiom(t(axiom.getProperty()),
@@ -737,7 +736,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(
@@ -751,7 +750,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLSubPropertyChainOfAxiom(t(axiom.getPropertyChain()),
@@ -764,7 +763,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLInverseObjectPropertiesAxiom(t(axiom.getFirstProperty()),
@@ -777,7 +776,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(axiom)) {
+            if (!predicate.test(axiom)) {
                 return axiom;
             }
             return update(df.getOWLHasKeyAxiom(t(axiom.getClassExpression()),
@@ -790,7 +789,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(rule)) {
+            if (!predicate.test(rule)) {
                 return rule;
             }
             return update(
@@ -804,7 +803,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLClass(t(ce.getIRI()));
@@ -816,7 +815,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectIntersectionOf(t(ce.getOperands()));
@@ -828,7 +827,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectUnionOf(t(ce.getOperands()));
@@ -840,7 +839,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectComplementOf(t(ce.getOperand()));
@@ -852,7 +851,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectSomeValuesFrom(t(ce.getProperty()), t(ce.getFiller()));
@@ -864,7 +863,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectAllValuesFrom(t(ce.getProperty()), t(ce.getFiller()));
@@ -876,7 +875,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectHasValue(t(ce.getProperty()), t(ce.getFiller()));
@@ -888,7 +887,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectMinCardinality(ce.getCardinality(), t(ce.getProperty()),
@@ -901,7 +900,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectExactCardinality(ce.getCardinality(), t(ce.getProperty()),
@@ -914,7 +913,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectMaxCardinality(ce.getCardinality(), t(ce.getProperty()),
@@ -927,7 +926,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectHasSelf(t(ce.getProperty()));
@@ -939,7 +938,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLObjectOneOf(t(ce.getIndividuals()));
@@ -951,7 +950,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLDataSomeValuesFrom(t(ce.getProperty()), t(ce.getFiller()));
@@ -963,7 +962,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLDataAllValuesFrom(t(ce.getProperty()), t(ce.getFiller()));
@@ -975,7 +974,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLDataHasValue(t(ce.getProperty()), t(ce.getFiller()));
@@ -987,7 +986,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLDataMinCardinality(ce.getCardinality(), t(ce.getProperty()),
@@ -1000,7 +999,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLDataExactCardinality(ce.getCardinality(), t(ce.getProperty()),
@@ -1013,7 +1012,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(ce)) {
+            if (!predicate.test(ce)) {
                 return ce;
             }
             return df.getOWLDataMaxCardinality(ce.getCardinality(), t(ce.getProperty()),
@@ -1026,7 +1025,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLDatatype(t(node.getIRI()));
@@ -1038,7 +1037,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLDataComplementOf(t(node.getDataRange()));
@@ -1050,7 +1049,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLDataOneOf(t(node.getValues()));
@@ -1062,7 +1061,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLDataIntersectionOf(t(node.getOperands()));
@@ -1074,7 +1073,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLDataUnionOf(t(node.getOperands()));
@@ -1086,7 +1085,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLDatatypeRestriction(t(node.getDatatype()),
@@ -1099,7 +1098,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             // plain literal is a terminal; if the transform did not make a
@@ -1116,7 +1115,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLFacetRestriction(t(node.getFacet()), t(node.getFacetValue()));
@@ -1128,7 +1127,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(property)) {
+            if (!predicate.test(property)) {
                 return property;
             }
             return df.getOWLObjectProperty(t(property.getIRI()));
@@ -1140,7 +1139,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(property)) {
+            if (!predicate.test(property)) {
                 return property;
             }
             return df.getOWLObjectInverseOf(t(property.getNamedProperty()));
@@ -1152,7 +1151,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(property)) {
+            if (!predicate.test(property)) {
                 return property;
             }
             return df.getOWLDataProperty(t(property.getIRI()));
@@ -1164,7 +1163,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(property)) {
+            if (!predicate.test(property)) {
                 return property;
             }
             return df.getOWLAnnotationProperty(t(property.getIRI()));
@@ -1176,7 +1175,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(individual)) {
+            if (!predicate.test(individual)) {
                 return individual;
             }
             return df.getOWLNamedIndividual(t(individual.getIRI()));
@@ -1188,7 +1187,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getOWLAnnotation(t(node.getProperty()), t(node.getValue()),
@@ -1223,7 +1222,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLClassAtom(t(node.getPredicate()), t(node.getArgument()));
@@ -1235,7 +1234,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLDataRangeAtom(t(node.getPredicate()), t(node.getArgument()));
@@ -1247,7 +1246,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLObjectPropertyAtom(t(node.getPredicate()), t(node.getFirstArgument()),
@@ -1260,7 +1259,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLDataPropertyAtom(t(node.getPredicate()), t(node.getFirstArgument()),
@@ -1273,7 +1272,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLBuiltInAtom(t(node.getPredicate()), t(node.getArguments()));
@@ -1285,7 +1284,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLVariable(t(node.getIRI()));
@@ -1297,7 +1296,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLIndividualArgument(t(node.getIndividual()));
@@ -1309,7 +1308,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLLiteralArgument(t(node.getLiteral()));
@@ -1321,7 +1320,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLSameIndividualAtom(t(node.getFirstArgument()),
@@ -1334,7 +1333,7 @@ public class OWLObjectTransformer<T> {
             if (transform != null) {
                 return transform;
             }
-            if (!predicate.apply(node)) {
+            if (!predicate.test(node)) {
                 return node;
             }
             return df.getSWRLDifferentIndividualsAtom(t(node.getFirstArgument()),

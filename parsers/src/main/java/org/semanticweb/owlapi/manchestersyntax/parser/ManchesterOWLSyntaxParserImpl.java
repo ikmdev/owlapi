@@ -2444,7 +2444,7 @@ public class ManchesterOWLSyntaxParserImpl implements ManchesterOWLSyntaxParser 
             consumeToken();
             OWLOntology ont = getOntology(tok);
             if (ont != null) {
-                importedOntologyIRI = ont.getOntologyID().getOntologyIRI().orNull();
+                importedOntologyIRI = ont.getOntologyID().getOntologyIRI().orElse(null);
             }
         } else {
             consumeToken();

@@ -12,6 +12,7 @@
  * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. */
 package uk.ac.manchester.cs.owl.owlapi;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -32,8 +33,6 @@ import org.semanticweb.owlapi.model.OWLObjectVisitorEx;
 import org.semanticweb.owlapi.util.OWLObjectTypeIndexProvider;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
-
-import com.google.common.base.Optional;
 
 /**
  * An OWLLiteral whose datatype is RDF_PLAIN_LITERAL
@@ -237,12 +236,12 @@ public class OWLLiteralImplPlain extends OWLObjectImplWithoutEntityAndAnonCachin
 
     @Override
     public Optional<IRI> asIRI() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
     public Optional<OWLAnonymousIndividual> asAnonymousIndividual() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override

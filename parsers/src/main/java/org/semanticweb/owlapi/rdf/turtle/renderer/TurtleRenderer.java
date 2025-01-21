@@ -147,7 +147,7 @@ public class TurtleRenderer extends RDFRendererBase {
     private void write(@Nonnull IRI iri) {
         if (NodeID.isAnonymousNodeIRI(iri)) {
             write(iri.toString());
-        } else if (iri.equals(ontology.getOntologyID().getOntologyIRI().orNull())) {
+        } else if (iri.equals(ontology.getOntologyID().getOntologyIRI().orElse(null))) {
             writeAsURI(iri.toString());
         } else {
             String name = pm.getPrefixIRIIgnoreQName(iri);

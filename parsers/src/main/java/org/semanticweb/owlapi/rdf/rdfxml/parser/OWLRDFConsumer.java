@@ -1484,7 +1484,7 @@ public class OWLRDFConsumer
             // It is possible for an ontology to have already had a version set.
             // Only if the parser is being used by itself, so not a common occurrence,
             // but it is existing behaviour and tested.
-            IRI versionIRI = ontology.getOntologyID().getVersionIRI().orNull();
+            IRI versionIRI = ontology.getOntologyID().getVersionIRI().orElse(null);
             if (versionIRI == null) {
                 versionIRI = ontologyVersions.get(ontologyIRIToSet);
             }

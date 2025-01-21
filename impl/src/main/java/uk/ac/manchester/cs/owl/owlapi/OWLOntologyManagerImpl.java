@@ -321,12 +321,12 @@ public class OWLOntologyManagerImpl
         try {
             Set<OWLOntologyID> owlOntologyIDs = ontologiesByID.keySet();
             for (OWLOntologyID nextOntologyID : owlOntologyIDs) {
-                if (ontologyIRI.equals(nextOntologyID.getOntologyIRI().orNull())) {
+                if (ontologyIRI.equals(nextOntologyID.getOntologyIRI().orElse(null))) {
                     return true;
                 }
             }
             for (OWLOntologyID ont : owlOntologyIDs) {
-                if (ontologyIRI.equals(ont.getVersionIRI().orNull())) {
+                if (ontologyIRI.equals(ont.getVersionIRI().orElse(null))) {
                     return true;
                 }
             }
@@ -366,7 +366,7 @@ public class OWLOntologyManagerImpl
         readLock.lock();
         try {
             for (OWLOntologyID ont : ontologiesByID.keySet()) {
-                if (ontologyVersionIRI.equals(ont.getVersionIRI().orNull())) {
+                if (ontologyVersionIRI.equals(ont.getVersionIRI().orElse(null))) {
                     return true;
                 }
             }
@@ -382,7 +382,7 @@ public class OWLOntologyManagerImpl
         try {
             Set<OWLOntologyID> result = new TreeSet<>();
             for (OWLOntologyID ont : ontologiesByID.keySet()) {
-                if (ontologyVersionIRI.equals(ont.getVersionIRI().orNull())) {
+                if (ontologyVersionIRI.equals(ont.getVersionIRI().orElse(null))) {
                     result.add(ont);
                 }
             }
@@ -400,9 +400,9 @@ public class OWLOntologyManagerImpl
             OWLOntology result = ontologiesByID.get(ontologyID);
             if (result == null) {
                 for (OWLOntologyID nextOntologyID : ontologiesByID.keySet()) {
-                    if (ontologyIRI.equals(nextOntologyID.getVersionIRI().orNull())
-                        || ontologyIRI.equals(nextOntologyID.getOntologyIRI().orNull())
-                        || ontologyIRI.equals(nextOntologyID.getDefaultDocumentIRI().orNull())) {
+                    if (ontologyIRI.equals(nextOntologyID.getVersionIRI().orElse(null))
+                        || ontologyIRI.equals(nextOntologyID.getOntologyIRI().orElse(null))
+                        || ontologyIRI.equals(nextOntologyID.getDefaultDocumentIRI().orElse(null))) {
                         result = ontologiesByID.get(nextOntologyID);
                     }
                 }
@@ -435,7 +435,7 @@ public class OWLOntologyManagerImpl
                 IRI documentIRI = getDocumentIRIFromMappers(ontologyID);
                 if (documentIRI == null) {
                     if (!ontologyID.isAnonymous()) {
-                        documentIRI = ontologyID.getDefaultDocumentIRI().orNull();
+                        documentIRI = ontologyID.getDefaultDocumentIRI().orElse(null);
                     } else {
                         documentIRI = IRI.generateDocumentIRI();
                     }
@@ -833,9 +833,9 @@ public class OWLOntologyManagerImpl
                 boolean found = false;
                 IRI iri = addImportDeclaration.getIRI();
                 for (OWLOntologyID id : ontologiesByID.keySet()) {
-                    if (iri.equals(id.getDefaultDocumentIRI().orNull())
-                        || iri.equals(id.getOntologyIRI().orNull())
-                        || iri.equals(id.getVersionIRI().orNull())) {
+                    if (iri.equals(id.getDefaultDocumentIRI().orElse(null))
+                        || iri.equals(id.getOntologyIRI().orElse(null))
+                        || iri.equals(id.getVersionIRI().orElse(null))) {
                         found = true;
                         ontologyIDsByImportsDeclaration.put(addImportDeclaration, id);
                     }
@@ -956,7 +956,7 @@ public class OWLOntologyManagerImpl
             IRI documentIRI = getDocumentIRIFromMappers(ontologyID);
             if (documentIRI == null) {
                 if (!ontologyID.isAnonymous()) {
-                    documentIRI = ontologyID.getDefaultDocumentIRI().orNull();
+                    documentIRI = ontologyID.getDefaultDocumentIRI().orElse(null);
                 } else {
                     documentIRI = IRI.generateDocumentIRI();
                 }
@@ -1107,7 +1107,7 @@ public class OWLOntologyManagerImpl
             OWLOntology ontByID = null;
             // Check for matches on the ontology IRI first
             for (OWLOntologyID nextOntologyID : ontologiesByID.keySet()) {
-                if (ontologyIRI.equals(nextOntologyID.getOntologyIRI().orNull())) {
+                if (ontologyIRI.equals(nextOntologyID.getOntologyIRI().orElse(null))) {
                     ontByID = ontologiesByID.get(nextOntologyID);
                 }
             }
@@ -1115,7 +1115,7 @@ public class OWLOntologyManagerImpl
             // version IRI if necessary
             if (ontByID == null) {
                 for (OWLOntologyID nextOntologyID : ontologiesByID.keySet()) {
-                    if (ontologyIRI.equals(nextOntologyID.getVersionIRI().orNull())) {
+                    if (ontologyIRI.equals(nextOntologyID.getVersionIRI().orElse(null))) {
                         ontByID = ontologiesByID.get(nextOntologyID);
                     }
                 }
