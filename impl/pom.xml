@@ -25,10 +25,6 @@
 		<!-- dev.ikm.jpms dependencies -->
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
-			<artifactId>guava</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>dev.ikm.jpms</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>
 		<dependency>

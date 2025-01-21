@@ -1,17 +1,16 @@
 open module org.semanticweb.owlapi {
 
 	requires com.github.benmanes.caffeine;
-	
+
 	requires java.base;
 	requires java.desktop;
 	requires java.xml;
-	
+
 	requires dev.ikm.jpms.eclipse.collections.api;
 	requires dev.ikm.jpms.eclipse.collections;
-	requires dev.ikm.jpms.google.common;
 	requires dev.ikm.jpms.javax.annotation;
 	requires dev.ikm.jpms.javax.inject;
-	
+
 	requires org.slf4j;
 
 	exports org.semanticweb.owlapi;
