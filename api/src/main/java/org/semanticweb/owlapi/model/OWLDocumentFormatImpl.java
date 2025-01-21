@@ -27,8 +27,8 @@ import org.semanticweb.owlapi.io.OWLOntologyLoaderMetaData;
 import org.semanticweb.owlapi.io.RDFParserMetaData;
 import org.semanticweb.owlapi.util.CollectionFactory;
 
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.Multimap;
+import org.eclipse.collections.api.multimap.MutableMultimap;
+import org.eclipse.collections.impl.multimap.list.FastListMultimap;
 
 /**
  * Represents the concrete representation format of an ontology. The equality of an ontology format
@@ -101,7 +101,7 @@ public abstract class OWLDocumentFormatImpl implements OWLDocumentFormat {
             return CollectionFactory.emptySet();
         }
         // determine what entities are illegally punned
-        Multimap<IRI, EntityType<?>> punnings = LinkedListMultimap.create();
+        MutableMultimap<IRI, EntityType<?>> punnings = FastListMultimap.newMultimap();
         for (OWLEntity e : signature) {
             // disregard individuals as they do not give raise to illegal
             // punnings; only keep track of punned entities, ignore the rest

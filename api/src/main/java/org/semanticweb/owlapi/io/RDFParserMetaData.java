@@ -20,12 +20,10 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import org.eclipse.collections.api.multimap.Multimap;
+import org.eclipse.collections.impl.multimap.list.FastListMultimap;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.util.CollectionFactory;
-
-import com.google.common.collect.ArrayListMultimap;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Multimaps;
 
 /**
  * @author Matthew Horridge, The University of Manchester, Bio-Health
@@ -38,7 +36,7 @@ public class RDFParserMetaData implements OWLOntologyLoaderMetaData, Serializabl
     private final int tripleCount;
     private final RDFOntologyHeaderStatus headerStatus;
     private final Set<RDFTriple> unparsedTriples;
-    private final transient ArrayListMultimap<IRI, Class<?>> guessedDeclarations;
+    private final transient FastListMultimap<IRI, Class<?>> guessedDeclarations;
 
     /**
      * @param headerStatus
@@ -51,7 +49,7 @@ public class RDFParserMetaData implements OWLOntologyLoaderMetaData, Serializabl
      *        guessed declarations map
      */
     public RDFParserMetaData(@Nonnull RDFOntologyHeaderStatus headerStatus, int tripleCount,
-        @Nonnull Set<RDFTriple> unparsedTriples, @Nonnull ArrayListMultimap<IRI, Class<?>> guessedDeclarations) {
+        @Nonnull Set<RDFTriple> unparsedTriples, @Nonnull FastListMultimap<IRI, Class<?>> guessedDeclarations) {
         this.tripleCount = tripleCount;
         this.headerStatus = checkNotNull(headerStatus, "headerStatus cannot be null");
         this.unparsedTriples = checkNotNull(unparsedTriples, "unparsedTriples cannot be null");
@@ -85,14 +83,14 @@ public class RDFParserMetaData implements OWLOntologyLoaderMetaData, Serializabl
         return CollectionFactory.getCopyOnRequestSetFromMutableCollection(unparsedTriples);
     }
 
-    /**
-     * @return the guessed declarations, i.e., those not parsed from explicit
-     *         declaration axioms
-     */
-    public Multimap<IRI, Class<?>> getGuessedDeclarations() {
-        if (guessedDeclarations == null) {
-            return ArrayListMultimap.create();
-        }
-        return Multimaps.unmodifiableMultimap(guessedDeclarations);
-    }
+	/**
+	 * @return the guessed declarations, i.e., those not parsed from explicit
+	 *         declaration axioms
+	 */
+	public Multimap<IRI, Class<?>> getGuessedDeclarations() {
+		if (guessedDeclarations == null) {
+			return FastListMultimap.newMultimap();
+		}
+		return guessedDeclarations.toImmutable();
+	}
 }

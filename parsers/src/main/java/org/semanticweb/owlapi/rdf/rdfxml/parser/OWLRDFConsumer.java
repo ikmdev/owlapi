@@ -132,7 +132,7 @@ import org.semanticweb.owlapi.vocab.XSDVocabulary;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.ArrayListMultimap;
+import org.eclipse.collections.impl.multimap.list.FastListMultimap;
 
 /**
  * A parser/interpreter for an RDF graph which represents an OWL ontology. The consumer interprets
@@ -253,9 +253,9 @@ public class OWLRDFConsumer
     final HandlerAccessor handlerAccessor;
     final TranslatorAccessor translatorAccessor;
     private final AnonymousNodeChecker nodeCheckerDelegate;
-    @Nonnull
-    private final ArrayListMultimap<IRI, Class<?>> guessedDeclarations = ArrayListMultimap.create();
-    RemappingIndividualProvider anonProvider;
+	@Nonnull
+	private final FastListMultimap<IRI, Class<?>> guessedDeclarations = FastListMultimap.newMultimap();
+	RemappingIndividualProvider anonProvider;
 
     /**
      * @param ontology the ontology

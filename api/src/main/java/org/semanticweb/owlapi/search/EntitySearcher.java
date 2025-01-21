@@ -30,6 +30,8 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import org.eclipse.collections.api.multimap.Multimap;
+import org.eclipse.collections.impl.multimap.list.FastListMultimap;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationAssertionAxiom;
@@ -53,9 +55,6 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLPropertyExpression;
 import org.semanticweb.owlapi.model.parameters.AxiomAnnotations;
 import org.semanticweb.owlapi.util.OWLAxiomSearchFilter;
-
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.Multimap;
 
 /**
  * Convenience methods moved from OWLEntity and its subinterfaces.
@@ -2156,14 +2155,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLDataPropertyExpression, OWLLiteral> getDataPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull OWLOntology ontology) {
-        Multimap<OWLDataPropertyExpression, OWLLiteral> map = LinkedListMultimap.create();
-        for (OWLDataPropertyAssertionAxiom ax : ontology.getDataPropertyAssertionAxioms(i)) {
-            map.put(ax.getProperty(), ax.getObject());
-        }
-        return map;
-    }
+	public static Multimap<OWLDataPropertyExpression, OWLLiteral> getDataPropertyValues(@Nonnull OWLIndividual i,
+			@Nonnull OWLOntology ontology) {
+		FastListMultimap<OWLDataPropertyExpression, OWLLiteral> map = FastListMultimap.newMultimap();
+		for (OWLDataPropertyAssertionAxiom ax : ontology.getDataPropertyAssertionAxioms(i)) {
+			map.put(ax.getProperty(), ax.getObject());
+		}
+		return map;
+	}
 
     /**
      * @param i individual
@@ -2171,16 +2170,16 @@ public class EntitySearcher {
      * @return literal values
      */
     @Nonnull
-    public static Multimap<OWLDataPropertyExpression, OWLLiteral> getDataPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull Iterable<OWLOntology> ontologies) {
-        Multimap<OWLDataPropertyExpression, OWLLiteral> collection = LinkedListMultimap.create();
-        assert collection != null;
-        for (OWLOntology o : ontologies) {
-            assert o != null;
-            collection.putAll(getDataPropertyValues(i, o));
-        }
-        return collection;
-    }
+	public static Multimap<OWLDataPropertyExpression, OWLLiteral> getDataPropertyValues(@Nonnull OWLIndividual i,
+			@Nonnull Iterable<OWLOntology> ontologies) {
+		FastListMultimap<OWLDataPropertyExpression, OWLLiteral> collection = FastListMultimap.newMultimap();
+		assert collection != null;
+		for (OWLOntology o : ontologies) {
+			assert o != null;
+			collection.putAll(getDataPropertyValues(i, o));
+		}
+		return collection;
+	}
 
     /**
      * @param i individual
@@ -2188,14 +2187,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getObjectPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull OWLOntology ontology) {
-        Multimap<OWLObjectPropertyExpression, OWLIndividual> map = LinkedListMultimap.create();
-        for (OWLObjectPropertyAssertionAxiom ax : ontology.getObjectPropertyAssertionAxioms(i)) {
-            map.put(ax.getProperty(), ax.getObject());
-        }
-        return map;
-    }
+	public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getObjectPropertyValues(@Nonnull OWLIndividual i,
+			@Nonnull OWLOntology ontology) {
+		FastListMultimap<OWLObjectPropertyExpression, OWLIndividual> map = FastListMultimap.newMultimap();
+		for (OWLObjectPropertyAssertionAxiom ax : ontology.getObjectPropertyAssertionAxioms(i)) {
+			map.put(ax.getProperty(), ax.getObject());
+		}
+		return map;
+	}
 
     /**
      * @param i individual
@@ -2203,14 +2202,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getObjectPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull Iterable<OWLOntology> ontologies) {
-        Multimap<OWLObjectPropertyExpression, OWLIndividual> map = LinkedListMultimap.create();
-        for (OWLOntology o : ontologies) {
-            map.putAll(getObjectPropertyValues(i, o));
-        }
-        return map;
-    }
+	public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getObjectPropertyValues(@Nonnull OWLIndividual i,
+			@Nonnull Iterable<OWLOntology> ontologies) {
+		FastListMultimap<OWLObjectPropertyExpression, OWLIndividual> map = FastListMultimap.newMultimap();
+		for (OWLOntology o : ontologies) {
+			map.putAll(getObjectPropertyValues(i, o));
+		}
+		return map;
+	}
 
     /**
      * @param i individual
@@ -2218,15 +2217,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getNegativeObjectPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull OWLOntology ontology) {
-        Multimap<OWLObjectPropertyExpression, OWLIndividual> map = LinkedListMultimap.create();
-        for (OWLNegativeObjectPropertyAssertionAxiom ax : ontology
-            .getNegativeObjectPropertyAssertionAxioms(i)) {
-            map.put(ax.getProperty(), ax.getObject());
-        }
-        return map;
-    }
+	public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getNegativeObjectPropertyValues(
+			@Nonnull OWLIndividual i, @Nonnull OWLOntology ontology) {
+		FastListMultimap<OWLObjectPropertyExpression, OWLIndividual> map = FastListMultimap.newMultimap();
+		for (OWLNegativeObjectPropertyAssertionAxiom ax : ontology.getNegativeObjectPropertyAssertionAxioms(i)) {
+			map.put(ax.getProperty(), ax.getObject());
+		}
+		return map;
+	}
 
     /**
      * @param i individual
@@ -2234,15 +2232,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLDataPropertyExpression, OWLLiteral> getNegativeDataPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull OWLOntology ontology) {
-        Multimap<OWLDataPropertyExpression, OWLLiteral> map = LinkedListMultimap.create();
-        for (OWLNegativeDataPropertyAssertionAxiom ax : ontology
-            .getNegativeDataPropertyAssertionAxioms(i)) {
-            map.put(ax.getProperty(), ax.getObject());
-        }
-        return map;
-    }
+	public static Multimap<OWLDataPropertyExpression, OWLLiteral> getNegativeDataPropertyValues(
+			@Nonnull OWLIndividual i, @Nonnull OWLOntology ontology) {
+		FastListMultimap<OWLDataPropertyExpression, OWLLiteral> map = FastListMultimap.newMultimap();
+		for (OWLNegativeDataPropertyAssertionAxiom ax : ontology.getNegativeDataPropertyAssertionAxioms(i)) {
+			map.put(ax.getProperty(), ax.getObject());
+		}
+		return map;
+	}
 
     /**
      * @param i individual
@@ -2250,14 +2247,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getNegativeObjectPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull Iterable<OWLOntology> ontologies) {
-        Multimap<OWLObjectPropertyExpression, OWLIndividual> map = LinkedListMultimap.create();
-        for (OWLOntology o : ontologies) {
-            map.putAll(getNegativeObjectPropertyValues(i, o));
-        }
-        return map;
-    }
+	public static Multimap<OWLObjectPropertyExpression, OWLIndividual> getNegativeObjectPropertyValues(
+			@Nonnull OWLIndividual i, @Nonnull Iterable<OWLOntology> ontologies) {
+		FastListMultimap<OWLObjectPropertyExpression, OWLIndividual> map = FastListMultimap.newMultimap();
+		for (OWLOntology o : ontologies) {
+			map.putAll(getNegativeObjectPropertyValues(i, o));
+		}
+		return map;
+	}
 
     /**
      * @param i individual
@@ -2265,14 +2262,14 @@ public class EntitySearcher {
      * @return property values
      */
     @Nonnull
-    public static Multimap<OWLDataPropertyExpression, OWLLiteral> getNegativeDataPropertyValues(
-        @Nonnull OWLIndividual i, @Nonnull Iterable<OWLOntology> ontologies) {
-        Multimap<OWLDataPropertyExpression, OWLLiteral> map = LinkedListMultimap.create();
-        for (OWLOntology o : ontologies) {
-            map.putAll(getNegativeDataPropertyValues(i, o));
-        }
-        return map;
-    }
+	public static Multimap<OWLDataPropertyExpression, OWLLiteral> getNegativeDataPropertyValues(
+			@Nonnull OWLIndividual i, @Nonnull Iterable<OWLOntology> ontologies) {
+		FastListMultimap<OWLDataPropertyExpression, OWLLiteral> map = FastListMultimap.newMultimap();
+		for (OWLOntology o : ontologies) {
+			map.putAll(getNegativeDataPropertyValues(i, o));
+		}
+		return map;
+	}
 
     /**
      * @param e object property
