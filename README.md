@@ -6,6 +6,7 @@ Primary changes:
 
 * Implement modules (JPMS)
 * Remove some modules, retaining core API and parsers
+* Replace guava with java.util and Eclipse collections
 
 ### Team Ownership - Product Owner
 
