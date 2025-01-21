@@ -3227,13 +3227,13 @@ class OWLOntologyHandler extends OWLElementHandler<OWLOntology> {
     void attribute(@Nonnull String localName, String value) {
         if (localName.equals("ontologyIRI")) {
             OWLOntologyID newID = new OWLOntologyID(IRI.create(value),
-                handler.getOntology().getOntologyID().getVersionIRI().orNull());
+                handler.getOntology().getOntologyID().getVersionIRI().orElse(null));
             handler.getOWLOntologyManager()
                 .applyChange(new SetOntologyID(handler.getOntology(), newID));
         }
         if (localName.equals("versionIRI")) {
             OWLOntologyID newID = new OWLOntologyID(
-                handler.getOntology().getOntologyID().getOntologyIRI().orNull(), IRI.create(value));
+                handler.getOntology().getOntologyID().getOntologyIRI().orElse(null), IRI.create(value));
             handler.getOWLOntologyManager()
                 .applyChange(new SetOntologyID(handler.getOntology(), newID));
         }

@@ -139,8 +139,6 @@ import org.semanticweb.owlapi.search.Filters;
 import org.semanticweb.owlapi.util.OWLAxiomSearchFilter;
 import org.semanticweb.owlapi.util.OWLAxiomVisitorAdapter;
 
-import com.google.common.collect.Iterables;
-
 /**
  * @author ignazio
  */
@@ -1524,14 +1522,14 @@ public class Internals implements Serializable {
 
     @Nonnull
     @Override
-    public String toString() {
-        StringBuilder b = new StringBuilder("Internals{(first 20 axioms) ");
-        for (OWLAxiom ax : Iterables.limit(axiomsByType.getAllValues(), 20)) {
-            b.append(ax).append('\n');
-        }
-        b.append('}');
-        return b.toString();
-    }
+	public String toString() {
+		StringBuilder b = new StringBuilder("Internals{(first 20 axioms) ");
+		for (OWLAxiom ax : axiomsByType.getAllValues().stream().limit(20).toList()) {
+			b.append(ax).append('\n');
+		}
+		b.append('}');
+		return b.toString();
+	}
 
     /**
      * @param entity entity to check

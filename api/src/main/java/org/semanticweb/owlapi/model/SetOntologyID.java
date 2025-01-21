@@ -14,14 +14,13 @@ package org.semanticweb.owlapi.model;
 
 import static org.semanticweb.owlapi.util.OWLAPIPreconditions.checkNotNull;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
 
 import org.semanticweb.owlapi.change.SetOntologyIDData;
 import org.semanticweb.owlapi.util.CollectionFactory;
-
-import com.google.common.base.Optional;
 
 /**
  * @author Matthew Horridge, The University of Manchester, Information Management Group
@@ -63,7 +62,7 @@ public class SetOntologyID extends OWLOntologyChange {
      * @param ontologyIRI The ontology iri
      */
     public SetOntologyID(@Nonnull OWLOntology ont, @Nonnull IRI ontologyIRI) {
-        this(ont, new OWLOntologyID(Optional.of(ontologyIRI), Optional.<IRI>absent()));
+        this(ont, new OWLOntologyID(Optional.of(ontologyIRI), Optional.<IRI>empty()));
     }
 
     @Override

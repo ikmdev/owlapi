@@ -20,21 +20,21 @@ public interface HasAnnotationValue {
      * @return for IRI values, the IRI, else an empty Optional
      */
     default Optional<IRI> iriValue() {
-        return Optional.ofNullable(annotationValue().asIRI().orNull());
+        return Optional.ofNullable(annotationValue().asIRI().orElse(null));
     }
 
     /**
      * @return for literal values, the literal, else an empty Optional
      */
     default Optional<OWLLiteral> literalValue() {
-        return Optional.ofNullable(annotationValue().asLiteral().orNull());
+        return Optional.ofNullable(annotationValue().asLiteral().orElse(null));
     }
 
     /**
      * @return for anonymous individual values, the individual, else an empty Optional
      */
     default Optional<OWLAnonymousIndividual> anonymousIndividualValue() {
-        return Optional.ofNullable(annotationValue().asAnonymousIndividual().orNull());
+        return Optional.ofNullable(annotationValue().asAnonymousIndividual().orElse(null));
     }
 
     /**

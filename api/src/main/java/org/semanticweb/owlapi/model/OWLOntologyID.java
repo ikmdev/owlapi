@@ -13,6 +13,7 @@
 package org.semanticweb.owlapi.model;
 
 import java.io.Serializable;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.annotation.Nonnull;
@@ -20,8 +21,6 @@ import javax.annotation.Nullable;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.common.base.Optional;
 
 /**
  * An object that identifies an ontology. Since OWL 2, ontologies do not have to have an ontology
@@ -41,7 +40,7 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
     @Nonnull
     private static final String ANON_PREFIX = "Anonymous-";
     @Nonnull
-    private Optional<String> internalID = Optional.absent();
+    private Optional<String> internalID = Optional.empty();
     @Nonnull
     private final Optional<IRI> ontologyIRI;
     @Nonnull
@@ -57,7 +56,7 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
      */
     @Deprecated
     public OWLOntologyID(IRI iri) {
-        this(opt(iri), Optional.<IRI>absent());
+        this(opt(iri), Optional.<IRI>empty());
     }
 
     /**
@@ -75,15 +74,15 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
     @Nonnull
     private static Optional<IRI> opt(@Nullable IRI i) {
         if (NodeID.isAnonymousNodeIRI(i) || i == null) {
-            return Optional.absent();
+            return Optional.empty();
         }
         if (!i.isAbsolute()) {
             LOGGER.error(
                 "Ontology IRIs must be absolute; IRI {} is relative and will be made absolute by prefixing urn:absolute: to it",
                 i);
-            return Optional.fromNullable(IRI.create("urn:absolute:" + i));
+            return Optional.ofNullable(IRI.create("urn:absolute:" + i));
         }
-        return Optional.fromNullable(i);
+        return Optional.ofNullable(i);
     }
 
     /**
@@ -97,12 +96,12 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
         if (i.isPresent()) {
             return opt(i.get());
         }
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Nonnull
     private static <T> Optional<T> opt(T i) {
-        return Optional.fromNullable(i);
+        return Optional.ofNullable(i);
     }
 
     /**
@@ -135,7 +134,7 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
      * IRI) is not present.
      */
     public OWLOntologyID() {
-        this(Optional.<IRI>absent(), Optional.<IRI>absent());
+        this(Optional.<IRI>empty(), Optional.<IRI>empty());
     }
 
     /**
@@ -197,7 +196,7 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
                 return ontologyIRI;
             }
         } else {
-            return Optional.absent();
+            return Optional.empty();
         }
     }
 
@@ -217,9 +216,9 @@ public class OWLOntologyID implements Comparable<OWLOntologyID>, Serializable {
     public String toString() {
         if (ontologyIRI.isPresent()) {
             String template = "OntologyID(OntologyIRI(<%s>) VersionIRI(<%s>))";
-            return String.format(template, ontologyIRI.get(), versionIRI.orNull());
+            return String.format(template, ontologyIRI.get(), versionIRI.orElse(null));
         }
-        return "OntologyID(" + internalID.orNull() + ')';
+        return "OntologyID(" + internalID.orElse(null) + ')';
     }
 
     @Override

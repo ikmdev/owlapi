@@ -1,11 +1,10 @@
 open module org.semanticweb.owlapi.impl {
 
 	requires com.github.benmanes.caffeine;
-	
-	requires dev.ikm.jpms.google.common;
+
 	requires dev.ikm.jpms.javax.annotation;
 	requires dev.ikm.jpms.javax.inject;
-	
+
 	requires org.slf4j;
 
 	requires transitive org.semanticweb.owlapi;

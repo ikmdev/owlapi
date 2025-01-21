@@ -23,6 +23,7 @@ import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Serializable;
 import java.io.Writer;
+import java.util.Optional;
 import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
@@ -46,8 +47,6 @@ import org.semanticweb.owlapi.model.OWLRuntimeException;
 import org.semanticweb.owlapi.util.OWLObjectTypeIndexProvider;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
-
-import com.google.common.base.Optional;
 
 /**
  * Implementation of {@link OWLLiteral} that uses compression of strings. See also
@@ -303,12 +302,12 @@ public class OWLLiteralImpl extends OWLObjectImplWithoutEntityAndAnonCaching imp
 
     @Override
     public Optional<IRI> asIRI() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
     public Optional<OWLAnonymousIndividual> asAnonymousIndividual() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override

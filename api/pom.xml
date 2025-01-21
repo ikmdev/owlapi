@@ -25,7 +25,7 @@
 		<!-- dev.ikm.jpms dependencies -->
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>
-			<artifactId>guava</artifactId>
+			<artifactId>eclipse-collections</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>dev.ikm.jpms</groupId>

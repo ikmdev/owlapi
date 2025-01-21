@@ -13,6 +13,7 @@
 package uk.ac.manchester.cs.owl.owlapi;
 
 import java.util.Collections;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -39,8 +40,6 @@ import org.semanticweb.owlapi.util.CollectionFactory;
 import org.semanticweb.owlapi.util.OWLObjectTypeIndexProvider;
 import org.semanticweb.owlapi.vocab.OWL2Datatype;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
-
-import com.google.common.base.Optional;
 
 /**
  * An OWLLiteral with xsd:string datatype and no language tag
@@ -297,12 +296,12 @@ public class OWLLiteralImplString implements OWLLiteral {
 
     @Override
     public Optional<IRI> asIRI() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override
     public Optional<OWLAnonymousIndividual> asAnonymousIndividual() {
-        return Optional.absent();
+        return Optional.empty();
     }
 
     @Override

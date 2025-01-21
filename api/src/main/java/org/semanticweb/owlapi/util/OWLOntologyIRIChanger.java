@@ -62,7 +62,7 @@ public class OWLOntologyIRIChanger {
     public List<OWLOntologyChange> getChanges(@Nonnull OWLOntology ontology, @Nonnull IRI newIRI) {
         List<OWLOntologyChange> changes = new ArrayList<>();
         changes.add(new SetOntologyID(ontology,
-            new OWLOntologyID(newIRI, ontology.getOntologyID().getVersionIRI().orNull())));
+            new OWLOntologyID(newIRI, ontology.getOntologyID().getVersionIRI().orElse(null))));
         for (OWLOntology ont : owlOntologyManager.getOntologies()) {
             assert ont != null;
             for (OWLImportsDeclaration decl : ont.getImportsDeclarations()) {
