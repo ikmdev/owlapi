@@ -47,7 +47,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>21</java.version>
+		<java.version>23</java.version>
+		<java.compilerArgs>--enable-preview</java.compilerArgs>
 		<!-- logging dependencies -->
 		<slf4j.version>2.0.16</slf4j.version>
 		<!-- test dependencies -->
@@ -307,7 +308,7 @@
 						<configuration>
 							<rules>
 								<requireMavenVersion>
-									<version>3.8</version>
+									<version>3.9</version>
 								</requireMavenVersion>
 								<requireJavaVersion>
 									<version>${java.version}</version>
@@ -331,12 +332,22 @@
 						</goals>
 						<configuration>
 							<ruleSet>
-								<ignoreVersions>
-									<ignoreVersion>
-										<type>regex</type>
-										<version>.+(alpha|beta).*</version>
-									</ignoreVersion>
-								</ignoreVersions>
+								<ignoreVersion>
+									<type>regex</type>
+									<version>.+-(alpha|beta).+</version>
+								</ignoreVersion>
+								<ignoreVersion>
+									<type>regex</type>
+									<version>.+-(M|m).+</version>
+								</ignoreVersion>
+								<ignoreVersion>
+									<type>regex</type>
+									<version>.+-(RC|rc).+</version>
+								</ignoreVersion>
+								<ignoreVersion>
+									<type>regex</type>
+									<version>(.+-SNAPSHOT|.+-M\d)</version>
+								</ignoreVersion>
 							</ruleSet>
 						</configuration>
 					</execution>
@@ -362,6 +373,9 @@
 					<source>${java.version}</source>
 					<target>${java.version}</target>
 					<fork>true</fork>
+					<compilerArgs>
+                        <arg>${java.compilerArgs}</arg>
+                    </compilerArgs>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -372,6 +386,15 @@
 						<exclude>**/*IntegrationTestCase.java</exclude>
 					</excludes>
 					<useModulePath>false</useModulePath>
+					<argLine>${java.compilerArgs}</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<useModulePath>false</useModulePath>
+					<argLine>${java.compilerArgs}</argLine>
 				</configuration>
 			</plugin>
 			<plugin>
