@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>dev.ikm.owlapi</groupId>
 		<artifactId>owlapi-parent</artifactId>
-		<version>4.8.1-AR-299_Java23-SNAPSHOT</version>
+		<version>4.8.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>owlapi-parsers</artifactId>
