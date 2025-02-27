@@ -11,7 +11,6 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,8 +35,8 @@ class CustomTokenizerTest {
         validateTokenizationOfString("<http://www.unc.edu/onto#foo", true);
     }
 
-    @Disabled
-    @Test
+//    @Disabled
+//    @Test
     void testTokenizeGeneOntology() throws Exception {
         String fileName = "/Users/ses/ontologies/GO/go.ofn";
         Reader in = new BufferedReader(new FileReader(fileName));
