@@ -8,6 +8,14 @@ Primary changes:
 * Remove some modules, retaining core API and parsers
 * Replace guava with java.util and Eclipse collections
 
+Requires Java 21.
+
+To build on Unix/Linux/OSX: `./mvnw clean install`
+
+On Windows: `./mvnw.cmd clean install`
+
+Available at [Maven Central](https://central.sonatype.com/namespace/dev.ikm.owlapi)
+
 ### Team Ownership - Product Owner
 
 Data Team - Eric Mays (External) <emays@mays-systems.com>
