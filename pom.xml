@@ -78,6 +78,7 @@
 		<maven-site-plugin.version>3.21.0</maven-site-plugin.version>
 		<maven-source-plugin.version>3.3.1</maven-source-plugin.version>
 		<maven-surefire-plugin.version>3.5.3</maven-surefire-plugin.version>
+		<maven-dependency-analyzer.version>1.16.0</maven-dependency-analyzer.version>
 		<!-- other plugins -->
 		<license-maven-plugin.version>2.6.0</license-maven-plugin.version>
 		<sonatype.central.plugin.version>0.8.0</sonatype.central.plugin.version> <!-- Property for deploying to Maven Central -->
@@ -459,7 +460,15 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+				<dependencies>
+					<!-- Necessary for JDK 24. Should be removed for updates of dependency plugin -->
+					<dependency>
+						<groupId>org.apache.maven.shared</groupId>
+						<artifactId>maven-dependency-analyzer</artifactId>
+						<version>${maven-dependency-analyzer.version}</version>
+					</dependency>
+				</dependencies>
+		</plugin>
 			<plugin>
 				<groupId>dev.ikm</groupId>
 				<artifactId>gitflow-maven-plugin</artifactId>
