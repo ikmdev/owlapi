@@ -9,6 +9,8 @@ Primary changes:
 * Replace guava with java.util and Eclipse collections
 
 Requires Java 24.
+Requires Maven 3.9.11
+Requires Git
 
 To build on Unix/Linux/OSX: `./mvnw clean install`
 
