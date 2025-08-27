@@ -6,8 +6,8 @@ open module org.semanticweb.owlapi {
 	requires java.desktop;
 	requires java.xml;
 
-	requires dev.ikm.jpms.eclipse.collections.api;
-	requires dev.ikm.jpms.eclipse.collections;
+    requires org.eclipse.collections.api;
+    requires org.eclipse.collections.impl;
 	requires dev.ikm.jpms.javax.annotation;
 	requires dev.ikm.jpms.javax.inject;
 
