@@ -8,7 +8,11 @@ Primary changes:
 * Remove some modules, retaining core API and parsers
 * Replace guava with java.util and Eclipse collections
 
-Requires Java 21.
+Requirements:
+
+* Requires Java 24.
+* Requires Maven 3.9.11
+* Requires Git
 
 To build on Unix/Linux/OSX: `./mvnw clean install`
 
